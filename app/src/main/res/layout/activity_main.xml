@@ -22,30 +22,29 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/password_editText"
-        android:hint="Password"
-        android:autoText="false"
-        android:background="@color/dim_foreground_disabled_material_dark"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/employeeId_editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    //android:layout_width="fill_parent"
+    //android:layout_height="40dp"
+    //android:inputType="textPassword"
+    //android:ems="10"
+    //android:id="@+id/password_editText"
+    //android:hint="Password"
+    //android:autoText="false"
+    //android:background="@color/dim_foreground_disabled_material_dark"
+    //android:layout_marginTop="24dp"
+    //android:layout_below="@+id/employeeId_editText"
+    //android:layout_alignParentLeft="true"
+    //android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:text="LOGIN"
         android:id="@+id/logIn_button"
-        android:background="@android:color/holo_green_dark"
+        android:background="#FCC439"
         android:layout_below="@+id/password_editText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="17dp" />
+        android:layout_marginTop="300dp" />
 
 
 
