@@ -28,10 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
       /*  try{
             SQLiteDatabase employeeDatabase = this.openOrCreateDatabase("EmployeeDB", MODE_PRIVATE, null);
-
             employeeDatabase.execSQL("CREATE TABLE IF NOT EXISTS users (name VARCHAR, age INT(3), employeeID VARCHAR)");
 
             employeeDatabase.execSQL("INSERT INTO users(name, age, employeeID) VALUES('awah', 24, '4190')");
