@@ -1,5 +1,6 @@
 package com.example.yanniquepc.demoapp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -15,13 +16,18 @@ public class MainActivity extends AppCompatActivity {
 
         EditText employeeIDEditText = (EditText) findViewById(R.id.employeeId_editText);
 
-        if(employeeIDEditText.getText().toString() == ""){
+        Intent i = new Intent(this, ManualModeActivity.class);
+        startActivity(i);
+
+       /* if(employeeIDEditText.getText().toString() == ""){
             Toast.makeText(MainActivity.this, "Invalid Employee ID", Toast.LENGTH_SHORT).show();
         } else {
 
-        }
+        }*/
 
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,4 +64,6 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
     }
+
+
 }
