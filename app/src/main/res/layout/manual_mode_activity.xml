@@ -73,7 +73,8 @@
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:text="Setting"
+            android:text="Settings"
+            android:onClick="setting"
             android:id="@+id/buttonSetting" />
 
         <Button
