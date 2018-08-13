@@ -12,15 +12,16 @@
     android:backgroundTint="@color/bright_foreground_disabled_material_dark">
 
     <EditText
+        android:id="@+id/employeeId_editText"
         android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:id="@+id/employeeId_editText"
-        android:hint="Employee ID"
-        android:autoText="false"
-        android:background="@color/dim_foreground_disabled_material_dark"
-        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerVertical="true"
+        android:autoText="false"
+        android:background="@color/colorBoxBackground"
+        android:hint="Employee ID"
+        android:inputType="number" />
 
     <Button
         android:layout_width="fill_parent"
@@ -28,7 +29,7 @@
         android:text="LOGIN"
         android:onClick="logIn"
         android:id="@+id/logIn_button"
-        android:background="@android:color/holo_green_dark"
+        android:background="@color/colorButton"
         android:layout_marginTop="46dp"
         android:layout_below="@+id/employeeId_editText"
         android:layout_alignParentLeft="true"

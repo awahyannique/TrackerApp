@@ -3,4 +3,18 @@
     <color name="colorPrimary">#000</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#ff4081</color>
+
+    /*button colors*/
+    <color name="colorButton">#FCC439</color>
+
+    /*color for background*/
+    <color name="custom_theme_color">#000000</color>
+
+    /*color for EmployeeID Box Background*/
+    <color name="colorBoxBackground">#DFDFDF</color>
+
+    /*colors for switch button*/
+    <color name="disable_foreground_grey">#DFDFDF</color>
+    <color name="disable_thumb_grey">#BBBBBB</color>
+    <color name="enable_thumb_blue">#7099FF</color>
 </resources>
