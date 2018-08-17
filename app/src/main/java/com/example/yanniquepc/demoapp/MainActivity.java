@@ -25,15 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent i = new Intent(MainActivity.this, ManualModeActivity.class);
-        i.putExtra("name" , name);
-        startActivity(i);
-
-
-       /* if(employeeIDEditText.getText().toString() == ""){
-            Toast.makeText(MainActivity.this, "Invalid Employee ID", Toast.LENGTH_SHORT).show();
-        } else {
-
-        }*/
+        i.putExtra("fname" , fname);
+        i.putExtra("lname" , lname);
+        i.putExtra("empID" , empID);
+        if (fname != null && lname != null && empID != null) {
+            startActivity(i);
+        }
 
     }
 
@@ -43,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private String empID;
     private RequestQueue mRequestQueue;
     private StringRequest stringRequest;
-    public String name = null;
+    public String fname = null;
+    public String lname = null;
 
     private String url;
 
@@ -84,7 +82,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.i(TAG, "Response: " + response.toString());
-                name= response.toString();
+                String phpResponse = response.toString();
+                String[] userInfo = phpResponse.split(",");
+                fname= userInfo[0];
+                lname= userInfo[1];
+                Log.i(TAG, "Response: " + fname);
                 logIn();
 
             }
@@ -93,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG, "ERROR: " + error.toString());
-
             }
         });
 
@@ -114,31 +115,3 @@ public class MainActivity extends AppCompatActivity {
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*  try{
-            SQLiteDatabase employeeDatabase = this.openOrCreateDatabase("EmployeeDB", MODE_PRIVATE, null);
-            employeeDatabase.execSQL("CREATE TABLE IF NOT EXISTS users (name VARCHAR, age INT(3), employeeID VARCHAR)");
-
-            employeeDatabase.execSQL("INSERT INTO users(name, age, employeeID) VALUES('awah', 24, '4190')");
-
-            employeeDatabase.execSQL("INSERT INTO users(name, age, employeeID) VALUES('bob', 25, '1234')");
-
-
-            Cursor c = employeeDatabase.rawQuery("SELECT * FROM users", null);
-
-            int nameIndex = c.getColumnIndex("name");
-            int ageIndex = c.getColumnIndex("age");
-            int employeeIDIndex = c.getColumnIndex("employeeID");
-
-            c.moveToFirst();
-            while(c != null){
-
-                Log.i("name", c.getString(nameIndex));
-                Log.i("age", Integer.toString(c.getInt(ageIndex)));
-                Log.i("employeeID", c.getString(employeeIDIndex));
-
-                c.moveToNext();
-            }
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }*/

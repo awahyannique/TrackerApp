@@ -34,32 +34,39 @@ public class ManualModeActivity extends AppCompatActivity {
     private Button buttonCLC;
 
     private RequestQueue mRequestQueue;
-
     private StringRequest stringRequest;
 
     //Change emailRecpt to the first name of the person you want it to go to
+    //This will only be used for developement
     private String emailRecpt = "Joel"; //or Mike Jeff Awah
+
     //Staff Memeber Info
     private String fname;
-    private String lname = "Knutson";
-    private String empID = "1234";
-    private String status = "ARRIVAL";
+    private String lname;
+    private String empID;
+    private int statusToggle=0;
+    private String status;
 
     //Location
     private String location;
 
     //GET URL
     private String url;
-    //private  String urlKaposia = "http://csc410.joelknutson.net/public/Email?empid=1234&fname=Joel&lname=Knutson&location=Kaposia&status=ARRIVAL&email="+emailRecpt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manual_mode_activity);
 
-        fname = fname = getIntent().getStringExtra("name");
+//////////// Get String Data from MainActivity.java and assign to variables  ///////
+        fname = getIntent().getStringExtra("fname");
+        lname = getIntent().getStringExtra("lname");
+        empID = getIntent().getStringExtra("empID");
 
-        /////////////   KAPOSIA BUTTON   /////////////////////
+
+//////////////////////          BUTTONS         /////////////////////////////////////
+
+        /////////////       KAPOSIA BUTTON      /////////////////////
         buttonKEC = (Button) findViewById(R.id.buttonKaposia);
 
         buttonKEC.setOnClickListener(new View.OnClickListener() {
@@ -68,15 +75,15 @@ public class ManualModeActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //send GET Request
-                location="Kaposia";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
-                sendGetRequest();
+               location="Kaposia";
+               checkStatus();
+               sendGetRequest();
 
             }
 
         });
 
-        /////////////   LINCOLN BUTTON   /////////////////////
+        /////////////         LINCOLN BUTTON     /////////////////////
         buttonLC = (Button) findViewById(R.id.buttonLincoln);
 
         buttonLC.setOnClickListener(new View.OnClickListener() {
@@ -86,58 +93,58 @@ public class ManualModeActivity extends AppCompatActivity {
 
                 //send GET Request
                 location="Lincoln";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
+                checkStatus();
                 sendGetRequest();
 
             }
 
         });
 
-        /////////////   SECONDARY BUTTON   /////////////////////
-        buttonLC = (Button) findViewById(R.id.buttonSecondary);
+        /////////////         SECONDARY BUTTON    /////////////////////
+        buttonSEC = (Button) findViewById(R.id.buttonSecondary);
 
-        buttonLC.setOnClickListener(new View.OnClickListener() {
+        buttonSEC.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
                 //send GET Request
                 location="Secondary";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
+                checkStatus();
                 sendGetRequest();
 
             }
 
         });
 
-        /////////////   DO BUTTON   /////////////////////
-        buttonLC = (Button) findViewById(R.id.buttonDistrictOffice);
+        /////////////            DO BUTTON         /////////////////////
+        buttonDO = (Button) findViewById(R.id.buttonDistrictOffice);
 
-        buttonLC.setOnClickListener(new View.OnClickListener() {
+        buttonDO.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
                 //send GET Request
                 location="District%20Office";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
+                checkStatus();
                 sendGetRequest();
 
             }
 
         });
 
-        /////////////   CLC BUTTON   /////////////////////
-        buttonLC = (Button) findViewById(R.id.buttonCLC);
+        /////////////             CLC BUTTON        /////////////////////
+        buttonCLC = (Button) findViewById(R.id.buttonCLC);
 
-        buttonLC.setOnClickListener(new View.OnClickListener() {
+        buttonCLC.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
                 //send GET Request
                 location="CLC";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
+                checkStatus();
                 sendGetRequest();
 
             }
@@ -145,8 +152,30 @@ public class ManualModeActivity extends AppCompatActivity {
         });
     }
 
+    /////////////    SET STATUS TO ARRIVAL OR DEPARTURE   ///////////////
+    private void checkStatus(){
+
+        if (statusToggle == 0)
+        {
+            status="ARRIVAL";
+            statusToggle=1;
+        }
+        else if (statusToggle != 0)
+        {
+            status="DEPARTURE";
+            statusToggle=0;
+        }
+    }
+
+
+    /////////////             SEND GET REQUEST        /////////////////////
+    //php server will send email based on input from url String
     private void sendGetRequest() {
 
+        //production url will go to front office email of location
+        //url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+location;
+        //developement url will go to developers email based on emailRecpt
+        url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
         mRequestQueue = Volley.newRequestQueue(this);
         stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
 
