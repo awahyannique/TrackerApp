@@ -23,11 +23,10 @@ public class MainActivity extends AppCompatActivity {
     public void logIn() {
 
 
-
         Intent i = new Intent(MainActivity.this, ManualModeActivity.class);
-        i.putExtra("fname" , fname);
-        i.putExtra("lname" , lname);
-        i.putExtra("empID" , empID);
+        i.putExtra("fname", fname);
+        i.putExtra("lname", lname);
+        i.putExtra("empID", empID);
         if (fname != null && lname != null && empID != null) {
             startActivity(i);
         }
