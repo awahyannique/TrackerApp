@@ -40,9 +40,10 @@ public class ManualModeActivity extends AppCompatActivity {
     //Change emailRecpt to the first name of the person you want it to go to
     private String emailRecpt = "Joel"; //or Mike Jeff Awah
     //Staff Memeber Info
-    private String fname = "Joel";
+    private String fname;
     private String lname = "Knutson";
     private String empID = "1234";
+    private String status = "ARRIVAL";
 
     //Location
     private String location;
@@ -56,6 +57,8 @@ public class ManualModeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manual_mode_activity);
 
+        fname = fname = getIntent().getStringExtra("name");
+
         /////////////   KAPOSIA BUTTON   /////////////////////
         buttonKEC = (Button) findViewById(R.id.buttonKaposia);
 
@@ -66,7 +69,7 @@ public class ManualModeActivity extends AppCompatActivity {
 
                 //send GET Request
                 location="Kaposia";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status=ARRIVAL&email="+emailRecpt;
+                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
                 sendGetRequest();
 
             }
@@ -83,7 +86,7 @@ public class ManualModeActivity extends AppCompatActivity {
 
                 //send GET Request
                 location="Lincoln";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status=ARRIVAL&email="+emailRecpt;
+                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
                 sendGetRequest();
 
             }
@@ -100,7 +103,7 @@ public class ManualModeActivity extends AppCompatActivity {
 
                 //send GET Request
                 location="Secondary";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status=ARRIVAL&email="+emailRecpt;
+                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
                 sendGetRequest();
 
             }
@@ -117,7 +120,7 @@ public class ManualModeActivity extends AppCompatActivity {
 
                 //send GET Request
                 location="District%20Office";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status=ARRIVAL&email="+emailRecpt;
+                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
                 sendGetRequest();
 
             }
@@ -134,7 +137,7 @@ public class ManualModeActivity extends AppCompatActivity {
 
                 //send GET Request
                 location="CLC";
-                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status=ARRIVAL&email="+emailRecpt;
+                url = "http://csc410.joelknutson.net/public/Email?empid="+empID+"&fname="+fname+"&lname="+lname+"&location="+location+"&status="+status+"&email="+emailRecpt;
                 sendGetRequest();
 
             }
