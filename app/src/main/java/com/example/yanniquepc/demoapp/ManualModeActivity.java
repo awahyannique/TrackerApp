@@ -20,10 +20,6 @@ import com.android.volley.toolbox.Volley;
 public class ManualModeActivity extends AppCompatActivity {
 
     //goes to settings
-    public void setting(View view){
-        Intent s = new Intent(this, settings_activity.class);
-        startActivity(s);
-    }
 
     private static final String TAG = MainActivity.class.getName();
 
@@ -50,6 +46,14 @@ public class ManualModeActivity extends AppCompatActivity {
     private int statusToggle=0;
     private String status;
 
+    public void setting(View view){
+        Intent s = new Intent(this, settings_activity.class);
+        s.putExtra("fname", fname);
+        s.putExtra("lname", lname);
+        s.putExtra("empID", empID);
+        startActivity(s);
+    }
+
     //counter variables
     int buttonKaposiaCounter = 0;
     int buttonLincolnCounter = 0;
@@ -75,7 +79,7 @@ public class ManualModeActivity extends AppCompatActivity {
         empID = getIntent().getStringExtra("empID");
 
         //text views
-     //   mTextView = (TextView) findViewById(R.id.tv);
+        //   mTextView = (TextView) findViewById(R.id.tv);
         TextViewStatus  = (TextView) findViewById(R.id.CheckedINorOut);
         LocationTextView = (TextView) findViewById(R.id.getCurrentLocation);
 
@@ -119,7 +123,7 @@ public class ManualModeActivity extends AppCompatActivity {
                     sendGetRequest();
 
                     TextViewStatus.setText("Checked Out");
-                    LocationTextView.setText(location);
+                    LocationTextView.setText("None");
                 }
 
             }
@@ -166,7 +170,7 @@ public class ManualModeActivity extends AppCompatActivity {
                     sendGetRequest();
 
                     TextViewStatus.setText("Checked Out");
-                    LocationTextView.setText(location);
+                    LocationTextView.setText("None");
 
                 }
             }
@@ -211,7 +215,7 @@ public class ManualModeActivity extends AppCompatActivity {
                     sendGetRequest();
 
                     TextViewStatus.setText("Checked Out");
-                    LocationTextView.setText(location);
+                    LocationTextView.setText("None");
 
                 }
 
@@ -257,7 +261,7 @@ public class ManualModeActivity extends AppCompatActivity {
                     sendGetRequest();
 
                     TextViewStatus.setText("Checked Out");
-                    LocationTextView.setText(location);
+                    LocationTextView.setText("None");
                 }
 
             }
@@ -302,7 +306,7 @@ public class ManualModeActivity extends AppCompatActivity {
                     sendGetRequest();
 
                     TextViewStatus.setText("Checked Out");
-                    LocationTextView.setText(location);
+                    LocationTextView.setText("None");
                 }
 
 
